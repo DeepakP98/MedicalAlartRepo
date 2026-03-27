@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import heroImg from "../assets/20260327_154741_0000.png";
 
 export default function Hero({ onGetStarted }) {
   return (
@@ -58,11 +59,11 @@ export default function Hero({ onGetStarted }) {
 
         {/* RIGHT IMAGE */}
         <motion.img
-          src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=900&q=80"
+          src={heroImg}
           alt="medical assistance"
           animate={{ y: [0, -12, 0] }}
           transition={{ repeat: Infinity, duration: 3 }}
-          className="rounded-2xl shadow-xl w-full max-w-md mx-auto md:max-w-full"
+          className="rounded-2xl shadow-xl w-full max-w-xs h-64 mx-auto md:max-w-sm md:h-80 object-cover"
         />
       </div>
     </section>
