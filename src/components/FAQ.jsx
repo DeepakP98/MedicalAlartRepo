@@ -29,51 +29,62 @@ export default function FAQ() {
 
   return (
     <section className="py-20 bg-gray-100">
-      <h2 className="text-3xl font-bold text-center mb-12">FAQs</h2>
-
-      <div className="max-w-3xl mx-auto space-y-4">
-        {faqs.map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{
-              opacity: 0,
-              x: i % 2 === 0 ? -100 : 100,
-            }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.15 }}
-            className="bg-white rounded-xl shadow-md overflow-hidden"
-          >
-            {/* QUESTION */}
-            <div
-              onClick={() => toggle(i)}
-              className="flex justify-between items-center p-5 cursor-pointer hover:bg-gray-50 transition"
-            >
-              <h3 className="font-semibold">{item.q}</h3>
-
-              <motion.span
-                animate={{ rotate: openIndex === i ? 180 : 0 }}
-                className="text-xl"
-              >
-                ⌄
-              </motion.span>
-            </div>
-
+      <div className="max-w-3xl mx-auto px-4 md:px-10">
         
-            <AnimatePresence>
-              {openIndex === i && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="px-5 pb-5 text-gray-600 text-sm"
+        {/* TITLE */}
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+          FAQs
+        </h2>
+
+        {/* FAQ LIST */}
+        <div className="space-y-4">
+          {faqs.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{
+                opacity: 0,
+                x: i % 2 === 0 ? -80 : 80,
+              }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 80, delay: i * 0.15 }}
+              className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden"
+            >
+              {/* QUESTION */}
+              <div
+                onClick={() => toggle(i)}
+                className="flex justify-between items-center p-4 md:p-5 cursor-pointer hover:bg-gray-50 transition"
+              >
+                <h3 className="font-semibold text-sm md:text-base text-left">
+                  {item.q}
+                </h3>
+
+                {/* ICON */}
+                <motion.span
+                  animate={{ rotate: openIndex === i ? 180 : 0 }}
+                  className="text-xl font-bold"
                 >
-                  {item.a}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        ))}
+                  {openIndex === i ? "−" : "+"}
+                </motion.span>
+              </div>
+
+              {/* ANSWER */}
+              <AnimatePresence>
+                {openIndex === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="px-4 md:px-5 pb-4 text-gray-600 text-sm text-left"
+                  >
+                    {item.a}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

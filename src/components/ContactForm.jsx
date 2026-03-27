@@ -1,6 +1,6 @@
 export default function ContactForm() {
   return (
-    <section id="contact" className="py-20 bg-white text-center">
+    <section id="contact" className="container-custom py-20 bg-white text-center">
       <h2 className="text-3xl font-bold mb-8">
         Get Started Now
       </h2>

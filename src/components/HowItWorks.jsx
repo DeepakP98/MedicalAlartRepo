@@ -20,7 +20,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="py-20 text-center bg-white">
+    <section className="container-custom py-20 text-center bg-white">
       <h2 className="text-3xl font-bold mb-12">How It Works</h2>
 
 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">

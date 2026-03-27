@@ -5,20 +5,22 @@ export default function ContactModal({ isOpen, onClose }) {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          onClick={onClose} // 👈 click outside close
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+          onClick={onClose}
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           {/* MODAL BOX */}
           <motion.div
-            onClick={(e) => e.stopPropagation()} // 👈 prevent close inside click
+            onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.8, y: 50 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.8, y: 50 }}
             transition={{ type: "spring", stiffness: 120 }}
-            className="relative bg-white rounded-2xl p-8 w-[90%] max-w-md shadow-2xl"
+            
+            /* 🔥 MOBILE FIX */
+            className="relative bg-white rounded-2xl p-6 md:p-8 w-full max-w-md shadow-2xl max-h-[90vh] overflow-y-auto"
           >
             {/* CLOSE BUTTON */}
             <button
@@ -29,7 +31,7 @@ export default function ContactModal({ isOpen, onClose }) {
             </button>
 
             {/* TITLE */}
-            <h2 className="text-2xl font-bold mb-6 text-center">
+            <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">
               Get Started
             </h2>
 
@@ -62,7 +64,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 hover:scale-105 transition"
+                className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
               >
                 Submit
               </button>
